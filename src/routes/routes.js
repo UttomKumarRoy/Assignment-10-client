@@ -6,6 +6,10 @@ import Register from '../components/Register'
 import Main from '../layout/Main'
 import Profile from '../components/Profile'
 import PrivateRoute from './PrivateRoute'
+import Courses from '../components/Courses'
+import Blog from '../components/Blog'
+import FAQ from '../components/FAQ'
+import ToggleTheme from '../components/ToggleTheme'
 
 const router = createBrowserRouter([
   {
@@ -20,6 +24,22 @@ const router = createBrowserRouter([
       {
         path: '/home',
         element: <Home />,
+      },
+      {
+        path: '/courses',
+        element: <Courses />
+      },
+      {
+        path: '/blog',
+        element: <Blog />
+      },
+      {
+        path: '/faq',
+        element: <FAQ />
+      },
+      {
+        path: '/toggle',
+        element: <ToggleTheme />
       },
       {
         path: '/login',

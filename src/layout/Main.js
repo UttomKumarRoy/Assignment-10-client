@@ -4,10 +4,10 @@ import Navbar from '../components/Navbar'
 
 const Main = () => {
   return (
-    <>
+    <div className='container'>
       <Navbar />
       <Outlet />
-    </>
+    </div>
   )
 }
 
