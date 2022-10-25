@@ -27,7 +27,8 @@ const router = createBrowserRouter([
       },
       {
         path: '/courses',
-        element: <Courses />
+        element: <Courses />,
+        loader: () => fetch('https://programming-language-server.vercel.app/course')
       },
       {
         path: '/blog',
