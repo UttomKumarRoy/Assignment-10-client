@@ -10,6 +10,7 @@ import Courses from '../components/Courses'
 import Blog from '../components/Blog'
 import FAQ from '../components/FAQ'
 import ToggleTheme from '../components/ToggleTheme'
+import CourseDetails from '../components/CourseDetails'
 
 const router = createBrowserRouter([
   {
@@ -29,6 +30,11 @@ const router = createBrowserRouter([
         path: '/courses',
         element: <Courses />,
         loader: () => fetch('https://programming-language-server.vercel.app/course')
+      },
+      {
+        path: '/courses/:id',
+        element: <CourseDetails />,
+        loader: ({params}) => fetch(`https://programming-language-server.vercel.app/course/${params.id}`)
       },
       {
         path: '/blog',
