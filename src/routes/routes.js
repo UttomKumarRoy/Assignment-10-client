@@ -11,6 +11,7 @@ import Blog from '../components/Blog'
 import FAQ from '../components/FAQ'
 import ToggleTheme from '../components/ToggleTheme'
 import CourseDetails from '../components/CourseDetails'
+import CheckOut from '../components/CheckOut'
 
 const router = createBrowserRouter([
   {
@@ -55,6 +56,15 @@ const router = createBrowserRouter([
       {
         path: '/register',
         element: <Register />,
+      },
+      {
+        path: '/checkout',
+        element: (
+          <PrivateRoute>
+            <CheckOut />
+          </PrivateRoute>
+        ),
+        loader: ({params}) => fetch(`https://programming-language-server.vercel.app/course/${params.id}`)
       },
       {
         path: '/profile',

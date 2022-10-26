@@ -1,19 +1,17 @@
 import React, {useRef} from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import ReactToPrint from 'react-to-print';
 
 const CourseDetails = () => {
     const ref=useRef();
     const course=useLoaderData();
-   const {name, image, description, price}=course
+   const { name, image, description, price}=course
     return (
         <div>
             <div className='text-center'>
-            <ReactToPrint  trigger={() => {
-            return <button className='bg-success text-white p-2 rounded-3'>Download PDF</button>;
-          }}
-          content={() => ref.current}
-        />
+                <ReactToPrint  trigger={() => {
+                return <button className='bg-success text-white p-2 rounded-3'>Download PDF</button>;
+                    }} content={() => ref.current} />
             </div>
             
         <div ref={ref}>
@@ -26,8 +24,8 @@ const CourseDetails = () => {
             <h3>Course Description: {description}</h3>
             <p>Course Price: {price}</p>
         </div>
-           
-            <button>Get Premium Access</button>
+           <Link to='/checkout'><button>Get Premium Access</button></Link>
+            
         </div>
     );
 };
