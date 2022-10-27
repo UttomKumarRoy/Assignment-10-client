@@ -4,8 +4,6 @@ import {
     GithubAuthProvider,
     GoogleAuthProvider,
     onAuthStateChanged,
-    sendEmailVerification,
-    sendPasswordResetEmail,
     signInWithEmailAndPassword,
     signInWithPopup,
     signOut,
@@ -37,13 +35,9 @@ import {
       return updateProfile(auth.currentUser, { displayName: name ,photoURL: photo})
     }
   
-    //   3. Email Verify
-    const verifyEmail = () => {
-      setLoading(true)
-      return sendEmailVerification(auth.currentUser)
-    }
+   
   
-    // 4. Google Signin
+    // 3. Google Signin
   
     const signInWithGoogle = () => {
       setLoading(true)
@@ -55,23 +49,19 @@ import {
       return signInWithPopup(auth, githubProvider)
     }
   
-    // 5. Logout
+    // 4. Logout
     const logout = () => {
       setLoading(true)
       return signOut(auth)
     }
   
-    //6. Login with Password
+    //5. Login with Password
     const signin = (email, password) => {
       setLoading(true)
       return signInWithEmailAndPassword(auth, email, password)
     }
   
-    //7. Forget Password
-    const resetPassword = email => {
-      setLoading(true)
-      return sendPasswordResetEmail(auth, email)
-    }
+    
   
     useEffect(() => {
       //this part will execute once the component is mounted.
@@ -90,12 +80,10 @@ import {
       user,
       createUser,
       updateName,
-      verifyEmail,
       signInWithGoogle,
       signInWithGithub,
       logout,
       signin,
-      resetPassword,
       loading,
     }
   

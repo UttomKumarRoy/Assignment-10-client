@@ -1,16 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import React, {  useEffect, useState } from 'react';
 import {Link} from 'react-router-dom'
+
 
 const Navbar = () => {
     const [mode , setMode]=useState('Light-Mode')
+
     const handleMode=()=>{
         (mode==='Light-Mode')?setMode('Dark-Mode'):setMode('Light-Mode')
     }
     useEffect(()=>{
       
-           
+           document.body.className=mode;
         
     },[mode])
+
+   
     
     const image=require('./logo.jpg');
     
@@ -47,6 +51,7 @@ const Navbar = () => {
                         Login
                     </Link>
                 </div>
+               
                
             </div>
         </div>
