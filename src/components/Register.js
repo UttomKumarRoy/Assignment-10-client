@@ -8,7 +8,7 @@ const Register = () => {
   const navigate = useNavigate()
   const location = useLocation()
   const from = location.state?.from?.pathname || '/'
-  const { createUser, updateName, verifyEmail, signInWithGoogle, signInWithGithub } =
+  const { createUser, updateName,  signInWithGoogle, signInWithGithub } =
     useContext(AuthContext)
 
   // Signup using Email & Pass
@@ -16,6 +16,7 @@ const Register = () => {
     event.preventDefault()
 
     const name = event.target.name.value
+    const photo = event.target.photo.value
     const email = event.target.email.value
     const password = event.target.password.value
 
@@ -25,22 +26,23 @@ const Register = () => {
         console.log(result.user)
 
         //2. Update Name
-        updateName(name)
-          .then(() => {
-            toast.success('Name Updated')
+        updateName(name, photo)
+          .then((result) => {
+            toast.success('Name and Photo Updated')
+            console.log(result.user);
 
             //3. Email verification
-            verifyEmail()
-              .then(() => {
-                toast.success('Please check your email for verification link')
-                navigate(from, { replace: true })
-              })
-              .catch(error => {
-                toast.error(error.message)
-              })
+            //verifyEmail()
+            //  .then(() => {
+            //    toast.success('Please check your email for verification link')
+            //    navigate(from, { replace: true })
+            //  })
+            //  .catch(error => {
+            //    toast.error(error.message)
+            //  })
           })
           .catch(error => {
-            toast.error(error.message)
+            //toast.error(error.message)
           })
       })
       .catch(error => console.log(error))
@@ -88,6 +90,20 @@ const Register = () => {
                 data-temp-mail-org='0'
               />
             </div>
+            <div>
+              <label htmlFor='email' className=''>
+                Photo URL
+              </label>
+              <input
+                type='text'
+                name='photo'
+                id='photo'
+                placeholder='Enter Your photo URL'
+                className=''
+                data-temp-mail-org='0'
+              />
+            </div>
+
             <div>
               <label htmlFor='email' className=''>
                 Email address

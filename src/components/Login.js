@@ -5,6 +5,7 @@ import { AuthContext } from '../contexts/UserContext'
 
 const Login = () => {
   const [userEmail, setUserEmail] = useState('')
+  const [err, setErr]=useState('')
   // const [showPass, setShowPass] = useState(false)
   const navigate = useNavigate()
   const location = useLocation()
@@ -24,7 +25,10 @@ const Login = () => {
         navigate(from, { replace: true })
         console.log(result.user)
       })
-      .catch(error => toast.error(error.message))
+      .catch(error => {
+        toast.error(error.message)
+        setErr(error.message);}
+      )
   }
 
   // Google Signin
@@ -47,7 +51,8 @@ const Login = () => {
       .then(() => {
         toast.success('Reset link has been sent, please check email')
       })
-      .catch(error => toast.error(error.message))
+      .catch(error => toast.error(error.message)
+      )
   }
 
   return (
@@ -108,6 +113,7 @@ const Login = () => {
             >
               Sign in
             </button>
+            <p className='text-warning'>{err}</p>
           </div>
         </form>
         <div className=''>
