@@ -23,26 +23,18 @@ const Register = () => {
     //1. Create Account
     createUser(email, password)
       .then(result => {
-        console.log(result.user)
+        
 
         //2. Update Name
         updateName(name, photo)
           .then((result) => {
             toast.success('Name and Photo Updated')
-            console.log(result.user);
+            
 
-            //3. Email verification
-            //verifyEmail()
-            //  .then(() => {
-            //    toast.success('Please check your email for verification link')
-            //    navigate(from, { replace: true })
-            //  })
-            //  .catch(error => {
-            //    toast.error(error.message)
-            //  })
+            
           })
           .catch(error => {
-            //toast.error(error.message)
+          console.log(error);
           })
       })
       .catch(error => console.log(error))
@@ -64,63 +56,54 @@ const Register = () => {
   }
 
   return (
-    <div className=''>
-      <div className=''>
-        <div className=''>
-          <h1 className=''>Register</h1>
-          <p className=''>Create a new account</p>
-        </div>
+    <div className='text-center border-5 bg-dark text-white'>
+      
+      
+          <h4 className='bg-success text-white p-2 rounded-2'>Register</h4>
+          <p>Create a new account</p>
+        
         <form
           onSubmit={handleSubmit}
-          noValidate=''
-          action=''
-          className=''
         >
           <div className=''>
             <div>
               <label htmlFor='email' className=''>
-                Name
+                Name :
               </label>
               <input
                 type='text'
                 name='name'
                 id='name'
                 placeholder='Enter Your Name Here'
-                className=''
-                data-temp-mail-org='0'
               />
             </div>
             <div>
               <label htmlFor='email' className=''>
-                Photo URL
+                Photo URL :
               </label>
               <input
                 type='text'
                 name='photo'
                 id='photo'
                 placeholder='Enter Your photo URL'
-                className=''
-                data-temp-mail-org='0'
               />
             </div>
 
             <div>
               <label htmlFor='email' className=''>
-                Email address
+                Email Address :
               </label>
               <input
                 type='email'
                 name='email'
                 id='email'
                 placeholder='Enter Your Email Here'
-                className=''
-                data-temp-mail-org='0'
               />
             </div>
             <div>
               <div className=''>
                 <label htmlFor='password' className=''>
-                  Password
+                  Password :
                 </label>
               </div>
               <input
@@ -128,49 +111,41 @@ const Register = () => {
                 name='password'
                 id='password'
                 placeholder='*******'
-                className=''
               />
             </div>
           </div>
-          <div className=''>
             <div>
               <button
                 type='submit'
-                className=''
               >
                 Sign Up
               </button>
             </div>
-          </div>
+          
         </form>
-        <div className=''>
-          <div className=''></div>
-          <p className=''>
+    
+          <p>
             Signup with social accounts
           </p>
-          <div className=''></div>
-        </div>
-        <div className=''>
+        
           <button
             onClick={handleGoogleSignin}
             aria-label='Log in with Google'
-            className=''
           >
             Google
-          </button>
+          </button> 
           
           <button onClick={handleGithubSignin} aria-label='Log in with GitHub' className=''>
            Github
           </button>
-        </div>
+        
         <p className=''>
           Already have an account yet?{' '}
-          <Link to='/login' className=''>
+          <Link to='/login'>
             Sign In
           </Link>
-          .
         </p>
-      </div>
+      
     </div>
   )
 }

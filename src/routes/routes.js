@@ -13,6 +13,7 @@ import ToggleTheme from '../components/ToggleTheme'
 import CourseDetails from '../components/CourseDetails'
 import CheckOut from '../components/CheckOut'
 
+
 const router = createBrowserRouter([
   {
     path: '/',

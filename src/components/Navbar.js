@@ -1,7 +1,10 @@
 import React from 'react';
 import {Link} from 'react-router-dom'
+
 const Navbar = () => {
+    
     const image=require('./logo.jpg');
+    
     return (
         <div className='d-flex justify-content-between align-items-center pt-5'>
             <div className='d-flex'>
@@ -30,10 +33,12 @@ const Navbar = () => {
                 </Link>
                 </div>
                 <div>
+                    
                 <Link className='mx-2 text-decoration-none' to='/login'>
-                    Login
-                </Link>
+                        Login
+                    </Link>
                 </div>
+               
             </div>
         </div>
     );
