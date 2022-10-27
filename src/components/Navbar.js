@@ -1,10 +1,12 @@
 import React from 'react';
 import {Link} from 'react-router-dom'
 const Navbar = () => {
+    const image=require('./logo.jpg');
     return (
-        <div className='d-flex justify-content-between align-items-center'>
-            <div>
-                <h1>Learn Programming to earn</h1>
+        <div className='d-flex justify-content-between align-items-center pt-5'>
+            <div className='d-flex'>
+                <img src={image} alt="Icon" />
+                <h1 className='text-success'>Learn Programming to Earn</h1>
             </div>
             <div className='d-flex justify-content-between align-items-center'>
                 <div>
