@@ -1,7 +1,16 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {Link} from 'react-router-dom'
 
 const Navbar = () => {
+    const [mode , setMode]=useState('Light-Mode')
+    const handleMode=()=>{
+        (mode==='Light-Mode')?setMode('Dark-Mode'):setMode('Light-Mode')
+    }
+    useEffect(()=>{
+      
+           
+        
+    },[mode])
     
     const image=require('./logo.jpg');
     
@@ -27,11 +36,11 @@ const Navbar = () => {
                     Blog
                 </Link>
                 </div>
-                <div>
-                <Link className='mx-2 text-decoration-none' to='/toggle'>
-                    Toggle Theme
+                
+                <Link className='mx-2 text-decoration-none' onClick={()=>handleMode()}>
+                    {mode}
                 </Link>
-                </div>
+                
                 <div>
                     
                 <Link className='mx-2 text-decoration-none' to='/login'>
