@@ -8,7 +8,7 @@ const Register = () => {
   const navigate = useNavigate()
   const location = useLocation()
   const from = location.state?.from?.pathname || '/'
-  const { createUser, updateName, verifyEmail, signInWithGoogle } =
+  const { createUser, updateName, verifyEmail, signInWithGoogle, signInWithGithub } =
     useContext(AuthContext)
 
   // Signup using Email & Pass
@@ -49,6 +49,13 @@ const Register = () => {
   // Google Signin
   const handleGoogleSignin = () => {
     signInWithGoogle().then(result => {
+      console.log(result.user)
+      navigate(from, { replace: true })
+    })
+  }
+
+  const handleGithubSignin = () => {
+    signInWithGithub().then(result => {
       console.log(result.user)
       navigate(from, { replace: true })
     })
@@ -136,7 +143,7 @@ const Register = () => {
             Google
           </button>
           
-          <button aria-label='Log in with GitHub' className=''>
+          <button onClick={handleGithubSignin} aria-label='Log in with GitHub' className=''>
            Github
           </button>
         </div>

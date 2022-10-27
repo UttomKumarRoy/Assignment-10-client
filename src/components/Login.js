@@ -10,7 +10,7 @@ const Login = () => {
   const location = useLocation()
   const from = location.state?.from?.pathname || '/'
 
-  const { signin, resetPassword, signInWithGoogle } = useContext(AuthContext)
+  const { signin, resetPassword, signInWithGoogle, signInWithGithub } = useContext(AuthContext)
 
   const handleSubmit = event => {
     event.preventDefault()
@@ -35,6 +35,12 @@ const Login = () => {
     })
   }
 
+  const handleGoogleGithub = () => {
+    signInWithGithub().then(result => {
+      console.log(result.user)
+      navigate(from, { replace: true })
+    })
+  }
   //Reset Pass
   const handleReset = () => {
     resetPassword(userEmail)
@@ -128,7 +134,7 @@ const Login = () => {
            Google
           </button>
           
-          <button aria-label='Log in with GitHub' className=''>
+          <button onClick={handleGoogleGithub} aria-label='Log in with GitHub' className=''>
             Github
           </button>
         </div>
