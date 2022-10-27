@@ -5,7 +5,7 @@ import ReactToPrint from 'react-to-print';
 const CourseDetails = () => {
     const ref=useRef();
     const course=useLoaderData();
-   const { name, image, description, price}=course
+   const {id, name, image, description, price}=course
     return (
         <div>
             <div className='text-center'>
@@ -15,16 +15,15 @@ const CourseDetails = () => {
             </div>
             
         <div ref={ref}>
-            <div className='d-flex justify-content-between align-items-center'>
-                <h2>Course Title: {name}</h2>
-                
-                
-            </div>
+            <h2>Course Title: {name}</h2>
             <img height={200} className='img-sm ' src={image} alt="this is pic" />
             <h3>Course Description: {description}</h3>
             <p>Course Price: {price}</p>
         </div>
-           <Link to='/checkout'><button>Get Premium Access</button></Link>
+        {
+ <Link to={`/checkout/${id}`}><button className='bg-secondary text-white p-3 rounded-2'>Get Premium Access</button></Link>
+        }
+          
             
         </div>
     );
